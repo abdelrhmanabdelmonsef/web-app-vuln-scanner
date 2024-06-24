@@ -1,0 +1,4 @@
+# Dirsearch started Wed Jun 19 14:21:36 2024 as: /home/mahmoud/dirsearch/dirsearch.py -w wordlist.txt -o testphp.vulnweb.com.txt -u http://testphp.vulnweb.com
+
+301   169B   http://testphp.vulnweb.com/admin    -> REDIRECTS TO: http://testphp.vulnweb.com/admin/
+200   894B   http://testphp.vulnweb.com/favicon.ico

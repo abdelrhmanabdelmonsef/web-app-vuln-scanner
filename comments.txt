@@ -1,0 +1,2 @@
+http://testhtml5.vulnweb.com/comment?id=1823
+http://testphp.vulnweb.com/hpp/params.php?p=0093&pp=7310

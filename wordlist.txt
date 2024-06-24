@@ -1,0 +1,4 @@
+admin
+profile
+comment
+favicon.ico

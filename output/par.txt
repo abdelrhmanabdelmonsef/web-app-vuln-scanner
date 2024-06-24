@@ -1,0 +1,6 @@
+http://testhtml5.vulnweb.com:80/static/css/?<my_tag_88fc8f0ec9141866cb14f3125be901b4/>=FUZZ
+http://testhtml5.vulnweb.com/comment?id=FUZZ
+http://testhtml5.vulnweb.com/report?id=FUZZ
+http://testhtml5.vulnweb.com/ajax/latest?offset=FUZZ
+http://testhtml5.vulnweb.com/ajax/popular?offset=FUZZ
+http://testhtml5.vulnweb.com/like?id=FUZZ

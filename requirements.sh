@@ -10,4 +10,5 @@ git clone https://github.com/swisskyrepo/SSRFmap.git
 pip3 install -r SSRFmap/requirements.txt
 git clone https://github.com/hansmach1ne/LFImap
 pip3 install -r LFImap/requirements.txt
+gem install XSpear
 #create folder for exploitation file

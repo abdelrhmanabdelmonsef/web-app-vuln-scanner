@@ -1,6 +1,26 @@
 from pathlib import Path
 import re
+import os
+import shutil
+
 class Operations:
+    @staticmethod
+    def mkdir(path):
+        try:
+            os.makedirs(path, exist_ok=True)
+            return True
+        except Exception as e:
+            return False
+    @staticmethod
+    def rmdir(path, with_children=False):
+        try:
+            if with_children:
+                shutil.rmtree(path)
+            else:
+                os.rmdir(path)
+            return True
+        except Exception as e:
+            return False
 
 
     @staticmethod
@@ -79,3 +99,4 @@ class Operations:
         for key,value in dic.items():
             result+=f"{prefix}{key}{infix}{value}{postfix}"
         return result    
+

@@ -1,3 +1,9 @@
 flowchart 
 documentation
 ai reporting 
+ssrf 
+csrf
+command injection 
+path traversal & lfi 
+sqli
+neclei

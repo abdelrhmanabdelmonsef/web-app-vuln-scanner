@@ -1,4 +1,0 @@
-from groq import Groq
-
-
-api="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"

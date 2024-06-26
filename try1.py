@@ -48,21 +48,21 @@ class exploitation1:
 
 
 
-# Example endpoints
-endpoints = ["http://testphp.vulnweb.com/search.php?test=query1"]
+# # Example endpoints
+# endpoints = ["http://testphp.vulnweb.com/search.php?test=query1"]
 
-# Create an instance of the exploitation class
-exploit = exploitation1(end_points=endpoints)
+# # Create an instance of the exploitation class
+# exploit = exploitation1(end_points=endpoints)
 
-# Run the XSStrike method
-errors ,reports= exploit.XSpear()
+# # Run the XSStrike method
+# errors ,reports= exploit.XSpear()
 
-# Check for any errors
-if errors:
-    print("Errors encountered:")
-    for file_name, error in errors.items():
-        print(f"{file_name}: {error}")
+# # Check for any errors
+# if errors:
+#     print("Errors encountered:")
+#     for file_name, error in errors.items():
+#         print(f"{file_name}: {error}")
         
-else:
-    print("XSStrike executed successfully for all endpoints.")
-    print(f"{list(reports[0].values())[0]["starttime"]}")
+# else:
+#     print("XSStrike executed successfully for all endpoints.")
+#     print(f"{list(reports[0].values())[0]["starttime"]}")

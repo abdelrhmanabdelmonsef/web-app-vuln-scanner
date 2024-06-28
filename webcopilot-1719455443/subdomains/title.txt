@@ -1,0 +1,5 @@
+http://vulnweb.com [200] [Acunetix Web Vulnerability Scanner - Test websites]
+http://testaspnet.vulnweb.com [200] [acublog news]
+http://testhtml5.vulnweb.com [200] [SecurityTweets - HTML5 test website for Acunetix Web Vulnerability Scanner]
+http://testphp.vulnweb.com [200] [Home of Acunetix Art]
+http://testasp.vulnweb.com [200] [acuforum forums]

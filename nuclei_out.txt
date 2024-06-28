@@ -1,0 +1,10 @@
+[weak-cipher-suites:tls-1.0] [ssl] [low] 0a2b008503e5d98580543a2d006b0009.web-security-academy.net:443 ["[tls10 TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA]"]
+[tls-version] [ssl] [info] 0a2b008503e5d98580543a2d006b0009.web-security-academy.net:443 ["tls10"]
+[deprecated-tls:tls_1.1] [ssl] [info] 0a2b008503e5d98580543a2d006b0009.web-security-academy.net:443 ["tls11"]
+[caa-fingerprint] [dns] [info] 0a2b008503e5d98580543a2d006b0009.web-security-academy.net
+[tls-version] [ssl] [info] 0a2b008503e5d98580543a2d006b0009.web-security-academy.net:443 ["tls11"]
+[deprecated-tls:tls_1.0] [ssl] [info] 0a2b008503e5d98580543a2d006b0009.web-security-academy.net:443 ["tls10"]
+[tls-version] [ssl] [info] 0a2b008503e5d98580543a2d006b0009.web-security-academy.net:443 ["tls12"]
+[weak-cipher-suites:tls-1.1] [ssl] [low] 0a2b008503e5d98580543a2d006b0009.web-security-academy.net:443 ["[tls11 TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA]"]
+[missing-csp] [http] [info] https://0a2b008503e5d98580543a2d006b0009.web-security-academy.net/image?filename=8.jpg
+[httponly-cookie-detect] [http] [info] https://0a2b008503e5d98580543a2d006b0009.web-security-academy.net/image?filename=8.jpg

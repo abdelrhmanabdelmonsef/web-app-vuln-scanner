@@ -3,5 +3,10 @@
         
         "GitHub.codespaces",
         "GitHub.vscode-pull-request-github"
+    ],
+    "python.analysis.extraPaths": [
+        "./exploitation",
+        "./recon",
+        "./recon/ip_resolver"
     ]
 }

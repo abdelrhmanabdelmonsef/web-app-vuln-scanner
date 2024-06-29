@@ -2,6 +2,6 @@ flowchart
 ssrf 
 csrf
 command injection --> payloads
-nmap
+nmap [--]
 shodan
 nuclei --> private templates

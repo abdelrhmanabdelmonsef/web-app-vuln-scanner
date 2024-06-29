@@ -9,7 +9,7 @@ class DNS:
             answers = dns.resolver.resolve(domain, 'A')
             return [rdata.to_text() for rdata in answers]
         except Exception as e:
-                return e
+                return False
     @staticmethod   
     def get_name_server(domain):
         try:
@@ -37,4 +37,4 @@ class DNS:
             answers = dns.resolver.resolve(ip, 'CNAME')
             return [rdata.to_text() for rdata in answers]
         except Exception as e:
-                return e 
+                return False

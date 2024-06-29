@@ -1,7 +1,8 @@
 from pathlib import Path
-import re
 import os
 import shutil
+import subprocess
+import sys
 
 def mkdir(path):
     try:
@@ -20,6 +21,10 @@ def rmdir(path, with_children=False):
     except Exception as e:
         return False
 
+def rm(file_path):
+    if is_exist(file_path):
+        os.remove(file_path)
+        
 def is_exist(path):
     return Path(path).exists()
 
@@ -32,22 +37,6 @@ def get_file_content(file_path,str=' '):
         return lines
     else:
         return False
-
-def dirsearch_extract_urls(file_path,str=' '):
-    urls = []
-    with open(file_path, 'r') as file:
-        for line in file:
-            # Check if the line starts with 30X
-            if re.match(r'30\d', line):
-                match = re.search(r'REDIRECTS TO: (http[^\s]+)', line)
-                if match:
-                    urls.append(match.group(1))
-            # Check if the line starts with 200
-            elif line.startswith('200'):
-                match = re.search(r'(http[^\s]+)', line)
-                if match:
-                    urls.append(match.group(1))
-    return urls
 
 def add_list_to_file(lst, file_path, operation, str):
     with open(file_path, operation) as file:
@@ -80,3 +69,8 @@ def qsreplace(end_point,value):
     params = splitor[-1].split('&')
     new_params = [f'{param.split("=")[0]}={value}' for param in params]
     return f"{domain}?{'&'.join(new_params)}"
+
+def execute_command(command):
+    proc= subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True, start_new_session=True)
+    stdout,stderr=proc.communicate()
+    return [proc,stdout.decode("utf-8"),stderr.decode("utf-8")]

@@ -1,5 +1,0 @@
-testasp.vulnweb.com
-testaspnet.vulnweb.com
-vulnweb.com
-testhtml5.vulnweb.com
-testphp.vulnweb.com

@@ -1,5 +1,0 @@
-http://testasp.vulnweb.com
-http://testaspnet.vulnweb.com
-http://vulnweb.com
-http://testhtml5.vulnweb.com
-http://testphp.vulnweb.com

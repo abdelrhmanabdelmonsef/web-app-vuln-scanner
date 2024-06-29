@@ -1,9 +1,7 @@
-flowchart 
-documentation
-ai reporting 
+flowchart  
 ssrf 
 csrf
-command injection 
-path traversal & lfi 
-sqli
-neclei
+command injection --> payloads
+nmap
+shodan
+nuclei --> private templates

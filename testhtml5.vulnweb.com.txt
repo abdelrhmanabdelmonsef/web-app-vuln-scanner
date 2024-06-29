@@ -1,5 +1,0 @@
-# Dirsearch started Wed Jun 19 14:21:30 2024 as: /home/mahmoud/dirsearch/dirsearch.py -w wordlist.txt -o testhtml5.vulnweb.com.txt -u http://testhtml5.vulnweb.com
-
-308   253B   http://testhtml5.vulnweb.com/admin    -> REDIRECTS TO: http://localhost/admin/
-200   894B   http://testhtml5.vulnweb.com/favicon.ico
-200     4KB  http://testhtml5.vulnweb.com/comment

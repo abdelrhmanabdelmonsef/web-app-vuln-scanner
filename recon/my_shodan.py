@@ -19,3 +19,7 @@ class shodan_class:
                 temp=" ".join(line.split())
                 self.domain_ip[f"{temp.split(' A ')[0]}.{self.target}"] = temp.split(" A ")[-1]
         methods.rm("shodan_out.txt")
+
+sh=shodan_class('vulnweb.com')
+sh.shodan()
+print(sh.domain_ip)

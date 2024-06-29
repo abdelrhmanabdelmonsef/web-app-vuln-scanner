@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Results with Buttons</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        function displayString(string) {
+            const html = marked.parse(string);
+            document.getElementById("output-box").innerHTML = html;
+        }
+        function displayFileContent(filename) {
+            fetch(`data/${filename}`)  // Replace with your server endpoint
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    let html = marked.parse(data.toString());
+                    document.getElementById("output-box").innerText = html;
+                })
+                .catch(error => {
+                    console.error('Error fetching file:', error);
+                    document.getElementById("output-box").innerText = 'Error fetching file';
+                });
+        }
+    </script>
+</head>
+<body>
+    <h1>Results</h1>
+    <button onclick="displayFileContent('m.md')">Button 1</button>
+    <button onclick="displayString('## String 2 Content\n\nThis is a [link](https://example.com).')">Button 2</button>
+    <button onclick="displayString('### String 3 Content\n\n- List item 1\n- List item 2\n## string 4 content \n\n - list \n\n - list')">Button 3</button>
+    
+    <div id="output-box" style="margin-top: 20px; padding: 10px; border: 1px solid black;">
+        Click a button to see the content here.
+    </div>
+    <button onclick="window.history.back()">Go Back</button>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scanner UI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Vulnerability Scanner</h1>
+        <form id="scan-form">
+            <label for="endpoints">Enter Domains (one per line):</label>
+            <textarea id="endpoints" name="endpoints" rows="10"></textarea>
+            <div class="radio-container">
+                <label><input type="radio" name="scans" value="recon">recon</label>
+                <!-- Add more checkboxes for other scans -->
+                <label><input type="radio" name="scans" value="ip_resolving"> recon with ip resolver</label>
+                <label><input type="radio" name="scans" value="lfi_xss_sqli"> loacal Vulnerability</label>
+                <label><input type="radio" name="scans" value="nuclei"> nuclei</label>
+                <label><input type="radio" name="scans" value="nuclei"> xsstrike & xspear</label>
+                <label><input type="radio" name="scans" value="nuclei"> nmap</label>
+                <label><input type="radio" name="scans" value="nuclei"> lfi & sqli</label>
+                <label><input type="radio" name="scans" value="nuclei"> resourse enum</label>
+
+            </div>
+            <button type="submit">Scan</button>
+        </form>
+    </div>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>

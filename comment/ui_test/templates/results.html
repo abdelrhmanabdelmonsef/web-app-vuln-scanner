@@ -3,19 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scan Results</title>
+    <title>{{ scan_type.capitalize() }} Scan Results</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        .result-section {
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .result-section h2 {
+            margin-top: 0;
+            color: #333;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 3px;
+            overflow-x: auto;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1>Scan Results</h1>
-        <div id="results">
-            <h3>Errors:</h3>
-            <pre>{{ results.errors }}</pre>
-            <h3>Reports:</h3>
-            <pre>{{ results.reports }}</pre>
+        <h1>{{ scan_type.capitalize() }} Scan Results</h1>
+        
+        <div id="results-container">
+            {% for key, value in results.recon.items() %}
+                <button onclick="toggleSection('{{ key }}-toggle')" id="{{ key | replace('_', ' ') | title }}">{{ key | replace('_', ' ') | title }}</button>
+                <div class="result-section" id="{{ key }}-toggle" style="display: none;">
+                    <h2>{{ key | replace('_', ' ') | title }}</h2>
+                    <div id="{{ key }}-content"></div>
+                </div>
+                <script>
+                    function toggleSection(sectionId) {
+                        var section = document.getElementById(sectionId);
+                        if (section.style.display === 'none' || section.style.display === '') {
+                            section.style.display = 'block';
+                        } else {
+                            section.style.display = 'none';
+                        }
+                    
+                    }
+                    var content = {{ value | tojson | safe }};
+                    var element = document.getElementById('{{ key }}-content');
+                    if (typeof content === 'object' && content !== null) {
+                        element.innerHTML = '<pre>' + JSON.stringify(content, null, 2) + '</pre>';
+                    } else {
+                        element.innerHTML = marked.parse(content);
+                    }
+                </script>
+            {% endfor %}
         </div>
-        <button onclick="window.history.back()">Go Back</button>
+        <hr><hr>
+        <div id="results-container">
+            {% for key, value in results.exploit.items() %}
+                <button onclick="toggleSection('{{ key }}-toggle')" id="{{ key | replace('_', ' ') | title }}">{{ key | replace('_', ' ') | title }}</button>
+                <div class="result-section" id="{{ key }}-toggle" style="display: none;">
+                    <h2>{{ key | replace('_', ' ') | title }}</h2>
+                    <div id="{{ key }}-content"></div>
+                </div>
+                
+                <script>
+                    function toggleSection(sectionId) {
+                        var section = document.getElementById(sectionId);
+                        if (section.style.display === 'none' || section.style.display === '') {
+                            section.style.display = 'block';
+                        } else {
+                            section.style.display = 'none';
+                        }
+                    
+                    }
+                    var content = {{ value | tojson | safe }};
+                    var element = document.getElementById('{{ key }}-content');
+                    if (typeof content === 'object' && content !== null) {
+                        element.innerHTML = '<pre>' + JSON.stringify(content, null, 2) + '</pre>';
+                    } else {
+                        element.innerHTML = marked.parse(content);
+                    }
+                </script>
+            {% endfor %}
+        </div>
+
+        <button onclick="window.location.href='/'">Back to Scanner</button>
     </div>
 </body>
 </html>

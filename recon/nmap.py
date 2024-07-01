@@ -26,8 +26,3 @@ class nmap:
         self.scan(ips_file)
         methods.rm(ips_file)
     
-    
-obj = nmap(['testphp.vunlweb.com'])
-obj.nmap()
-print('Report:',obj.reports)
-print('Errors:',obj.errors)

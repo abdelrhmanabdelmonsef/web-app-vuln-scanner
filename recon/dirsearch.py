@@ -18,7 +18,7 @@ class DirSearch:
         return URL.split('//')[-1].split('/')[0]
     
     def dirsearch_execute(self,str_flags):
-        command = f"python3 '{global_path}/Web Vulnarability Scanner/dirsearch/dirsearch.py' {str_flags} 2> /dev/null"
+        command = f"python3 '{global_path}/Web dirsearch.py' {str_flags} 2> /dev/null"
         print(command)
         _,out,err=methods.execute_command(command)
         if not err:
@@ -64,7 +64,7 @@ class DirSearch:
         except Exception as e:
             self.errors['general'] = e     
 
-dir_search = DirSearch(['http://testhtml5.vulnweb.com','http://testphp.vulnweb.com','http://testasp.vulnweb.com'])
-dir_search.ldirsearch({'-w':'word.txt'})
-print(f'Output: {dir_search.end_points}')
-print(f'Errors: {dir_search.errors}')
+# dir_search = DirSearch(['http://testhtml5.vulnweb.com','http://testphp.vulnweb.com','http://testasp.vulnweb.com'])
+# dir_search.ldirsearch({'-w':'word.txt'})
+# print(f'Output: {dir_search.end_points}')
+# print(f'Errors: {dir_search.errors}')

@@ -72,7 +72,3 @@ class resolver:
         self.get_name_servers()
         self.get_virtual_hosts()
 
-re=resolver(['testhtml5.vulnweb.com','google.com','facebook.com'])
-
-re.resolve()
-print(re.subdomains_ips_mapper)

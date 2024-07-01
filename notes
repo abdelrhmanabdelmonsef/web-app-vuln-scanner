@@ -5,3 +5,6 @@ command injection --> payloads
 nmap [--]
 shodan
 nuclei --> private templates
+#paths of fuzzing files
+/home/kali/Tools/fuzzing-templates/crlf
+/home/kali/nuclei-templates/dast/vulnerabilities/crlf

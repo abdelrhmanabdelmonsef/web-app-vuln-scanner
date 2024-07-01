@@ -1,26 +1,12 @@
-from flask import Flask, json, request, render_template, jsonify, redirect, send_from_directory, url_for
-from concurrent.futures import ThreadPoolExecutor, as_completed
-import subprocess
+from flask import Flask, json, request, render_template, jsonify, redirect, url_for 
 import os
 import sys
-parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../exploitation'))
-
-# Add the parent directory to sys.path
+parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../'))
 sys.path.insert(0, parent_dir)
-
-# Now you can import the module from the parent directory
-
-from lfi import lfi
-from api import reporting # type: ignore
+from recon import recon
+from exploitation import exploitation 
 
 app = Flask(__name__)
-
-class Operations:
-    @staticmethod
-    def get_file_content(file_path):
-        with open(file_path, 'r') as file:
-            return file.read().splitlines()
-
 
 @app.route('/')
 def index():
@@ -28,45 +14,42 @@ def index():
 
 @app.route('/scan', methods=['POST'])
 def scan():
-    data = request.get_json()
-    end_points = data.get('endpoints')
-    selected_scans = data.get('scans')
-    
-    errors = []
-    reports = {}
+    data = request.form
+    end_points = data.get('endpoints').split('\n')
+    selected_recon = data.get('recon')
+    nuclei=data.get('nuclei')    
+    sqlmap=data.get('sqlmap')
+    lfi=data.get('lfi')
+    xsstrike=data.get('xsstrike')
+    xspear=data.get('xspear')
+    exploit_list=[]
+    if nuclei : 
+        exploit_list.append(nuclei)
+    if lfi : 
+        exploit_list.append(lfi)
+    if sqlmap : 
+        exploit_list.append(sqlmap)
+    if xsstrike : 
+        exploit_list.append(xsstrike)
+    if xspear : 
+        exploit_list.append(xspear)
+    # my_recon=recon(end_points,selected_recon)
+    my_threads = {'xsstrike': "xsstrike", 'xspear': "xspear", 'lfi': 50, 'sqlmap': 10, 'nuclei': 5}
+    my_delays = {'xsstrike1': 5, 'xspear1': 5, 'lfi1': 0, 'sqlmap1': 5, 'nuclei1': 10}
+    # my_exploit=exploitation(my_recon.end_point_with_parameter,my_threads,my_delays)
+    # my_exploit.exploitation()
 
-    if 'ip_resolving' in selected_scans:
-        scan_name='ip_resolving'
-    elif 'recon' in selected_scans:
-        scan_name="recon"
-    
-    
-    output_file = 'output/results.json'
+    output_file = f'output/{selected_recon}_results.json'
     with open(output_file, 'w') as f:
-        json.dump({'errors': errors, 'reports': reports}, f)
-    if scan_name=='recon':
-        return jsonify({'redirect': url_for('recon', filename='results.json')})
-    elif scan_name=='ip_resolving':
-        return jsonify({'redirect': url_for('ip_resolving', filename='results.json')})
-    else:
-        return jsonify({'error': 'No valid scan selected'}), 400
+        json.dump({'recon': my_threads, 'exploit': my_delays}, f)
+    
+    return redirect(url_for('results', scan_type=selected_recon, filename=f'{selected_recon}_results.json'))
 
-@app.route('/results/<filename>')
-def recon(filename):
+@app.route('/results/<scan_type>/<filename>')
+def results(scan_type, filename):
     with open(f'output/{filename}', 'r') as f:
         results = json.load(f)
-    return render_template('results.html', results=results)
-
-@app.route('/results1/<filename>')
-def ip_resolving(filename):
-    with open(f'output/{filename}', 'r') as f:
-        results = json.load(f)
-    return render_template('results1.html', results=results)
-
-@app.route('/results1/data/<path:filename>')
-def serve_file(filename):
-    return send_from_directory('data', filename)
-
+    return render_template('results.html', results=results, scan_type=scan_type)
 
 if __name__ == '__main__':
     os.makedirs('output', exist_ok=True)

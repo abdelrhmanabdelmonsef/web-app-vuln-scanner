@@ -19,7 +19,7 @@
                     return response.text();
                 })
                 .then(data => {
-                    let html = marked.parse(data.toString());
+                    let html = marked.parse(data.trim());
                     document.getElementById("output-box").innerText = html;
                 })
                 .catch(error => {

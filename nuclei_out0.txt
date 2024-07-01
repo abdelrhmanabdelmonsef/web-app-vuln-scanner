@@ -1,0 +1,11 @@
+[caa-fingerprint] [dns] [info] 0aec002204235a24817f94eb00ef00af.web-security-academy.net
+[deprecated-tls:tls_1.1] [ssl] [info] 0aec002204235a24817f94eb00ef00af.web-security-academy.net:443 ["tls11"]
+[tls-version] [ssl] [info] 0aec002204235a24817f94eb00ef00af.web-security-academy.net:443 ["tls10"]
+[weak-cipher-suites:tls-1.0] [ssl] [low] 0aec002204235a24817f94eb00ef00af.web-security-academy.net:443 ["[tls10 TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA]"]
+[missing-csp] [http] [info] https://0aec002204235a24817f94eb00ef00af.web-security-academy.net/image?filename=25.jpg
+[deprecated-tls:tls_1.0] [ssl] [info] 0aec002204235a24817f94eb00ef00af.web-security-academy.net:443 ["tls10"]
+[tls-version] [ssl] [info] 0aec002204235a24817f94eb00ef00af.web-security-academy.net:443 ["tls11"]
+[weak-cipher-suites:tls-1.1] [ssl] [low] 0aec002204235a24817f94eb00ef00af.web-security-academy.net:443 ["[tls11 TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA]"]
+[httponly-cookie-detect] [http] [info] https://0aec002204235a24817f94eb00ef00af.web-security-academy.net/image?filename=25.jpg
+[tls-version] [ssl] [info] 0aec002204235a24817f94eb00ef00af.web-security-academy.net:443 ["tls12"]
+[CVE-2015-4074] [http] [high] https://0aec002204235a24817f94eb00ef00af.web-security-academy.net/image/?filename=25.jpg&filename=/../../../../../../../../../../../../etc/passwd&option=com_helpdeskpro&task=ticket.download_attachment&original_filename=AnyFileName.exe

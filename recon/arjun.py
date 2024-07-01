@@ -49,7 +49,7 @@ class arjun:
         except Exception as e:
             self.errors['general'] = e     
 
-arj = arjun(['http://testhtml5.vulnweb.com','http://testphp.vulnweb.com','http://testasp.vulnweb.com'])
-arj.larjun()
-print(f'End point with params: {arj.end_points_with_params}')
-print(f'Errors: {arj.errors}')
+# arj = arjun(['http://testhtml5.vulnweb.com','http://testphp.vulnweb.com','http://testasp.vulnweb.com'])
+# arj.larjun()
+# print(f'End point with params: {arj.end_points_with_params}')
+# print(f'Errors: {arj.errors}')

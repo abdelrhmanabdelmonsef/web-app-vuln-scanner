@@ -49,7 +49,7 @@ class paramspider:
         except Exception as e:
             self.errors['general'] = e     
 
-spider = paramspider(['http://testhtml5.vulnweb.com','http://testphp.vulnweb.com','http://testasp.vulnweb.com'])
-spider.lparamspider()
-print(f'End point with params: {spider.end_points_with_params}')
-print(f'Errors: {spider.errors}')
+# spider = paramspider(['http://testhtml5.vulnweb.com','http://testphp.vulnweb.com','http://testasp.vulnweb.com'])
+# spider.lparamspider()
+# print(f'End point with params: {spider.end_points_with_params}')
+# print(f'Errors: {spider.errors}')

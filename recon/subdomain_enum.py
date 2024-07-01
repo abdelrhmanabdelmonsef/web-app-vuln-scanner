@@ -5,12 +5,13 @@ import subprocess
 import requests
 import concurrent.futures
 import os
+
 sys.path.insert(0,os.path.abspath(os.path.join(os.path.dirname(__file__), 'ip_resolver')))
 sys.path.insert(0,os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from DNS import DNS
 import methods
-class SubdomainEnumerator:
+class subdomain_enum:
     def __init__(self,domain):
         self.subdomains = set()
         self.live_subdomains = set()
@@ -20,12 +21,12 @@ class SubdomainEnumerator:
     def dns_enumeration(self):
         result=DNS.get_cname(self.domain)
         if result:
-            self.subdomains.union(set(result))
+            self.subdomains.updata(set(result))
         else:
             self.errors['CNAME']=True
 
     def bruteforce_subdomains(self):
-        subs=methods.get_file_content("/home/kali/Desktop/Web Vulnarability Scanner/recon/word.txt",'\n')
+        subs=methods.get_file_content("/home/kali/Desktop/Web Vulnarability Scanner/n0kovo_subdomains_small.txt",'\n')
         with concurrent.futures.ThreadPoolExecutor(max_workers=50) as executor:
             futures = [executor.submit(self.check_subdomain, f"{sub}.{self.domain}") for sub in subs[:5]]
             concurrent.futures.wait(futures)
@@ -38,10 +39,12 @@ class SubdomainEnumerator:
             self.errors['A']=True
 
     def crt_sh_enumeration(self):
-        url = f"https://crt.sh/?q=%.{self.domain}&output=json"
+        url = f"https://crt.sh/?q=%.{self.domain.split('//')[-1]}&output=json"
+        print(url)
         try:
             response = requests.get(url)
             data = response.json()
+            print(data)
             for item in data:
                 subdomains = set(item['name_value'].split('\n'))
                 self.subdomains.update(subdomains)
@@ -68,7 +71,7 @@ class SubdomainEnumerator:
 
     def subfinder(self):
         try:
-            subfinder_output = subprocess.check_output(["subfinder", "-d", self.domain]).decode("utf-8")
+            subfinder_output = subprocess.check_output(["subfinder", "-d", f"{self.domain}"]).decode("utf-8")
             for line in subfinder_output.splitlines():
                 self.subdomains.add(line.strip())
         except:
@@ -76,7 +79,7 @@ class SubdomainEnumerator:
 
     def sublister(self):
         try:
-            sublister_output = subprocess.check_output(["sublist3r", "-d", self.domain]).decode("utf-8")
+            sublister_output = subprocess.check_output(["sublist3r", "-d", f"{self.domain}"]).decode("utf-8")
             for line in sublister_output.splitlines():
                 self.subdomains.add(line.strip())
         except:
@@ -105,12 +108,5 @@ class SubdomainEnumerator:
         # self.subfinder()
         # self.sublister()
         self.check_live_subdomains()
-
-
-su=SubdomainEnumerator('vulnweb.com')
-su.enumerate()
-
-print(su.live_subdomains )
-print(su.subdomains)
 
 

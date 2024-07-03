@@ -6,7 +6,6 @@ import threads
 
 class arjun:
     def __init__(self,end_points):
-        print('in costructor')
         self.end_points=end_points
         self.end_points_with_params={}
         self.errors={'end_points':[],'general':[]}
@@ -16,7 +15,6 @@ class arjun:
     
     def arjun_execute(self,str_flags):
         command = f"arjun {str_flags} 2> /dev/null"
-        print(command)
         _,out,err=methods.execute_command(command)
         if not err:
             return out
@@ -30,7 +28,6 @@ class arjun:
         return methods.dic_to_str(flags,postfix=' ')
     
     def arjun(self,end_point,flags={}):
-        print('in argun')
         arjun_result = self.arjun_execute(self.str_flags(flags,end_point))
         if arjun_result:
             self.end_points_with_params[end_point] = methods.get_file_content(flags["-oT"])
@@ -38,7 +35,7 @@ class arjun:
             self.errors[flags["-oT"]].append(end_point)
 
     def larjun(self,flags={}):
-        print("[●] Vulnerabilities Scanning  -  LFI")
+        print("[●] Vulnerabilities Scanning  -  Arjun")
         try:
             thread_objects = []
             for end_point in self.end_points:

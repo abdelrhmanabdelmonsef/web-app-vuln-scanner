@@ -7,26 +7,18 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <script>
     function enableExploit() {
-        const reconChecked = document.querySelector('input[name="recon"]:checked');
+        const reconCheckboxes = document.querySelectorAll('input[name^="recon_"]');
         const exploitFieldset = document.getElementById('exploitFieldset');
-        const exploitCheckboxes = [
-            document.querySelector('input[name="nuclei"]'),
-            document.querySelector('input[name="lfi"]'),
-            document.querySelector('input[name="sqlmap"]'),
-            document.querySelector('input[name="xspear"]'),
-            document.querySelector('input[name="xsstrike"]')
-        ];
+        const exploitCheckboxes = document.querySelectorAll('#exploitFieldset input[type="checkbox"]');
         
-        if (reconChecked) {
+        const anyReconChecked = Array.from(reconCheckboxes).some(checkbox => checkbox.checked);
+        
+        if (anyReconChecked) {
             exploitFieldset.classList.remove('disabled');
-            exploitCheckboxes.forEach(checkbox => {
-                if (checkbox) checkbox.disabled = false;
-            });
+            exploitCheckboxes.forEach(checkbox => checkbox.disabled = false);
         } else {
             exploitFieldset.classList.add('disabled');
-            exploitCheckboxes.forEach(checkbox => {
-                if (checkbox) checkbox.disabled = true;
-            });
+            exploitCheckboxes.forEach(checkbox => checkbox.disabled = true);
         }
     }
 
@@ -43,18 +35,22 @@
             
             <fieldset>
                 <legend>Recon</legend>
-                <label><input type="radio" name="recon" value="all_recon" onclick="enableExploit()"> All Recon Phases</label><br>
-                <label><input type="radio" name="recon" value="subdoman" onclick="enableExploit()"> Subdomains Enumeration</label><br>
-                <label><input type="radio" name="recon" value="subdomains_&_endpoint" onclick="enableExploit()"> Endpoints Enumeration </label><br>
+                <label><input type="checkbox" name="recon_shodan" value="shodan" onclick="enableExploit()"> Shodan</label><br>
+                <label><input type="checkbox" name="recon_subdomain_enum" value="subdomain_enum" onclick="enableExploit()"> Subdomain enumeration</label><br>
+                <label><input type="checkbox" name="recon_resolver" value="resolver" onclick="enableExploit()"> Resolver</label><br>
+                <label><input type="checkbox" name="recon_dirsearch" value="dirsearch" onclick="enableExploit()"> Dirsearch</label><br>
+                <label><input type="checkbox" name="recon_paramspider" value="paramspider" onclick="enableExploit()"> Paramspider</label><br>
+                <label><input type="checkbox" name="recon_nmap" value="nmap" onclick="enableExploit()"> Nmap</label><br>
+                <label><input type="checkbox" name="recon_arjun" value="arjun" onclick="enableExploit()"> Arjun</label><br>
             </fieldset>
             
             <fieldset id="exploitFieldset" class="disabled">
                 <legend>Exploit</legend>
-                <label><input type="checkbox" name="nuclei" value="nuclei" disabled> Nuclei</label><br>
-                <label><input type="checkbox" name="lfi" value="lfi" disabled> Local file inclusion </label><br>
-                <label><input type="checkbox" name="xspear" value="xspear" disabled> Xss with Xspear</label><br>
-                <label><input type="checkbox" name="xsstrike" value="xsstrike" disabled> Xss with Xsstrike</label><br>
-                <label><input type="checkbox" name="sqlmap" value="sqlmap" disabled> Sql injection </label><br>
+                <label><input type="checkbox" name="exploit_nuclei" value="nuclei" disabled> Nuclei</label><br>
+                <label><input type="checkbox" name="exploit_lfi" value="lfi" disabled> Local file inclusion</label><br>
+                <label><input type="checkbox" name="exploit_xspear" value="xspear" disabled> XSS with Xspear</label><br>
+                <label><input type="checkbox" name="exploit_xsstrike" value="xsstrike" disabled> XSS with Xsstrike</label><br>
+                <label><input type="checkbox" name="exploit_sqlmap" value="sqlmap" disabled> SQL injection</label><br>
             </fieldset>
             
             <button type="submit">Scan</button>

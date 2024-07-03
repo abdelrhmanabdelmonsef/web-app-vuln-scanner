@@ -4,7 +4,7 @@ sys.path.insert(0,os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 import methods
 import threads
 
-global_path = '/home/mahmoud'
+global_path = '/home/kali'
 
 class paramspider:
     def __init__(self,URLs):
@@ -17,7 +17,6 @@ class paramspider:
     
     def paramspider_execute(self,str_flags):
         command = f"python3 '{global_path}/Web Vulnarability Scanner/ParamSpider/paramspider.py' {str_flags} 2> /dev/null"
-        print(command)
         _,out,err=methods.execute_command(command)
         if not err:
             return out
@@ -38,7 +37,7 @@ class paramspider:
             self.errors['urls'].append(URL)
 
     def lparamspider(self,flags={}):
-        print("[●] Vulnerabilities Scanning  -  LFI")
+        print("[●] Vulnerabilities Scanning  -  paramspider")
         try:
             thread_objects = []
             for URL in self.URLs:

@@ -10,7 +10,6 @@ import os
 import sys
 sys.path.insert(0,os.path.abspath(os.path.join(os.path.dirname(__file__), 'recon/')))
 sys.path.insert(0,os.path.abspath(os.path.join(os.path.dirname(__file__), 'recon/ip_resolver')))
-import methods
 import threads
 from groc_ai import groq
 from subdomain_enum import subdomain_enum
@@ -32,27 +31,23 @@ class recon():
         self.ips=[]
         self.endpoints=[]
         self.endpoint_with_params=[]
-        self.groc_ai=groq()
+        self.groc_ai = groq()
 
     def run_shodan(self):
-        print(1)
-        domain=self.domain.split('//')[-1]
+        domain = self.domain.split('//')[-1]
         my_shodan = shodan_class(domain)
         my_shodan.shodan()
         my_shodan_outputs = my_shodan.domain_ip
         self.ips += my_shodan_outputs
-        print(my_shodan_outputs)
         my_shodan_long_ai_report = self.groc_ai.reporting(my_shodan_outputs,'This is the shodan tool ouptut Create the markdown file that includes all detailed information')
         my_shodan_short_ai_report =  self.groc_ai.reporting(my_shodan_outputs,'This is the shodan tool ouptut Create the short markdown file that includes important informations')
         self.reports['shodan'].append(my_shodan_long_ai_report)
         self.reports['shodan'].append(my_shodan_short_ai_report)
         
     def run_subdomain_enum(self):
-        print(2)
         my_subdomain_enum = subdomain_enum(self.domain)
         my_subdomain_enum.enumerate()
         my_subdomain_enum_output = my_subdomain_enum.subdomains
-        print(my_subdomain_enum_output)
         self.subdomains += list(my_subdomain_enum_output)
         self.alive_subdomains += my_subdomain_enum.live_subdomains
         my_subdomain_enum_long_ai_report = self.groc_ai.reporting(my_subdomain_enum_output,'This is the subdomain enumeration tool ouptut Create the markdown file that includes all detailed information')
@@ -61,7 +56,6 @@ class recon():
         self.reports['subdomain_enum'].append(my_subdomain_enum_short_ai_report)
 
     def run_resolver(self):
-        print(3)
         my_resolver = resolver(self.subdomains)
         my_resolver.resolve()
         my_resolver_output = {'subdomains_ips_mapper':my_resolver.subdomains_ips_mapper, 'subdomains_ns_mapper':my_resolver.subdomains_ns_mapper, 'ips':my_resolver.ips, 'name_server':my_resolver.nss, 'virtual_hosts':my_resolver.virtual_hosts}
@@ -71,7 +65,6 @@ class recon():
         self.reports['resolver'].append(resolver_short_ai_report)
 
     def run_dirsearch(self):
-        print(4)
         my_dirsearch = DirSearch(self.alive_subdomains)
         my_dirsearch.ldirsearch()
         my_dirsearch_ouputs = my_dirsearch.end_points
@@ -82,7 +75,6 @@ class recon():
         self.reports['dirsearch'].append(my_dirsearch_short_ai_report)
 
     def run_paramspider(self):
-        print(5)
         my_paramspider = paramspider(self.domain)
         my_paramspider.lparamspider()
         my_paramspider_output = my_paramspider.end_points_with_params
@@ -93,7 +85,6 @@ class recon():
         self.reports['paramspider'].append(my_paramspider_short_ai_report)
 
     def run_arjun(self):
-        print(5)
         my_arjun = arjun(self.domain)
         my_arjun.larjun()
         my_arjun_ouptut = my_arjun.end_points_with_params
@@ -104,7 +95,6 @@ class recon():
         self.reports['arjun'].append(my_arjun_short_ai_report)
 
     def run_nmap(self):
-        print(5)
         my_nmap = nmap(self.domain)
         my_nmap.nmap()
         my_nmap_ouptut = my_nmap.reports
@@ -117,8 +107,8 @@ class recon():
     def recon(self,lst):
         thread_objects = []
         if 'nmap' in lst:
-                t = threads.thread(self.run_nuclei,())
-                thread_objects.append(t)
+            t = threads.thread(self.run_nmap,())
+            thread_objects.append(t)
 
         if 'shodan' in lst:
             t = threads.thread(self.run_shodan,())
@@ -136,26 +126,11 @@ class recon():
                 t = threads.thread(self.run_dirsearch,())
                 thread_objects.append(t)
             
-                if 'paramspider' in lst:
+            if 'paramspider' in lst:
                     t = threads.thread(self.run_paramspider,())
                     thread_objects.append(t)
                 
-                if 'arjun' in lst:
+            if 'arjun' in lst:
                     t = threads.thread(self.run_arjun,())
                     thread_objects.append(t)
-
-        print('final')
         threads.join_threads(thread_objects)
-        print('final2')
-
-
-domain = 'https://google.com'
-my_lst = ['subdomain_enum']
-my_recon = recon(domain)
-my_recon.recon(my_lst)
-for key,value in my_recon.reports.items():
-    print(f'#####{key}#####')
-    for item in value:
-        print(item)
-
-

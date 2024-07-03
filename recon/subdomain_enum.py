@@ -40,11 +40,9 @@ class subdomain_enum:
 
     def crt_sh_enumeration(self):
         url = f"https://crt.sh/?q=%.{self.domain.split('//')[-1]}&output=json"
-        print(url)
         try:
             response = requests.get(url)
             data = response.json()
-            print(data)
             for item in data:
                 subdomains = set(item['name_value'].split('\n'))
                 self.subdomains.update(subdomains)

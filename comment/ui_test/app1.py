@@ -16,12 +16,36 @@ def index():
 def scan():
     data = request.form
     end_points = data.get('endpoints').split('\n')
-    selected_recon = data.get('recon')
-    nuclei=data.get('nuclei')    
-    sqlmap=data.get('sqlmap')
-    lfi=data.get('lfi')
-    xsstrike=data.get('xsstrike')
-    xspear=data.get('xspear')
+    print(end_points)
+    shodan=data.get('recon_shodan')    
+    subdomain_enum=data.get('recon_subdomain_enum')
+    resolver=data.get('recon_resolver')
+    dirsearch=data.get('recon_dirsearch')
+    paramspider=data.get('recon_paramspider')
+    nmap=data.get('recon_nmap')
+    arjun=data.get('recon_arjun')
+    recon_list=[]
+    if shodan : 
+        recon_list.append(shodan)
+    if subdomain_enum : 
+        recon_list.append(subdomain_enum)
+    if resolver : 
+        recon_list.append(resolver)
+    if dirsearch : 
+        recon_list.append(dirsearch)
+    if paramspider : 
+        recon_list.append(paramspider)
+    if nmap : 
+        recon_list.append(nmap)
+    if arjun : 
+        recon_list.append(arjun)
+    print(recon_list)
+
+    nuclei=data.get('exploit_nuclei')    
+    sqlmap=data.get('exploit_sqlmap')
+    lfi=data.get('exploit_lfi')
+    xsstrike=data.get('exploit_xsstrike')
+    xspear=data.get('exploit_xspear')
     exploit_list=[]
     if nuclei : 
         exploit_list.append(nuclei)
@@ -33,23 +57,35 @@ def scan():
         exploit_list.append(xsstrike)
     if xspear : 
         exploit_list.append(xspear)
-    # my_recon=recon(end_points,selected_recon)
+    print(exploit_list)
+
+    my_recon=recon(end_points[0])
+    my_recon.recon(recon_list)
+    print(my_recon.endpoint_with_params)
+
+        
+    my_recon_reports = my_recon.reports
+
     my_threads = {'xsstrike': "xsstrike", 'xspear': "xspear", 'lfi': 50, 'sqlmap': 10, 'nuclei': 5}
-    my_delays = {'xsstrike1': 5, 'xspear1': 5, 'lfi1': 0, 'sqlmap1': 5, 'nuclei1': 10}
-    # my_exploit=exploitation(my_recon.end_point_with_parameter,my_threads,my_delays)
-    # my_exploit.exploitation()
-
-    output_file = f'output/{selected_recon}_results.json'
-    with open(output_file, 'w') as f:
-        json.dump({'recon': my_threads, 'exploit': my_delays}, f)
+    my_delays = {'xsstrike1': 5, 'xspear1': 5, 'lfi1': 0, 'sqlmap1': 5, 'nuclei': 10}
+    my_exploit=exploitation(my_recon.endpoint_with_params,my_threads,my_delays)
+    my_exploit.exploitation(exploit_list)
+    my_exploit_reports = my_exploit.reports
     
-    return redirect(url_for('results', scan_type=selected_recon, filename=f'{selected_recon}_results.json'))
+    print(my_exploit_reports)
+    
+    output_file = f'output/results.json'
+    with open(output_file, 'w') as f:
+        json.dump({'recon': my_recon_reports, 'exploit': my_exploit_reports}, f)
+    
+    return redirect(url_for('results', filename='results.json'))
 
-@app.route('/results/<scan_type>/<filename>')
-def results(scan_type, filename):
+
+@app.route('/results/<filename>')
+def results( filename):
     with open(f'output/{filename}', 'r') as f:
         results = json.load(f)
-    return render_template('results.html', results=results, scan_type=scan_type)
+    return render_template('results.html', results=results)
 
 if __name__ == '__main__':
     os.makedirs('output', exist_ok=True)

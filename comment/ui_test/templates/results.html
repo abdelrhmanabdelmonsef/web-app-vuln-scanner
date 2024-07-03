@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ scan_type.capitalize() }} Scan Results</title>
+    <title> Scan Results</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
@@ -27,7 +27,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>{{ scan_type.capitalize() }} Scan Results</h1>
+        <h1> Scan Results</h1>
         
         <div id="results-container">
             {% for key, value in results.recon.items() %}

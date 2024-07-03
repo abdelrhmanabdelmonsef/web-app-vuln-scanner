@@ -1,12 +1,11 @@
 import os
 import sys
 sys.path.insert(0,os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-print(sys.path)
 import methods
 import threads
 import re
 
-global_path = '/home/mahmoud/Desktop/'
+global_path = '/home/kali/Desktop/'
 
 class DirSearch:
     def __init__(self,URLs):
@@ -19,7 +18,6 @@ class DirSearch:
     
     def dirsearch_execute(self,str_flags):
         command = f"python3 '{global_path}/Web dirsearch.py' {str_flags} 2> /dev/null"
-        print(command)
         _,out,err=methods.execute_command(command)
         if not err:
             return out
@@ -54,7 +52,7 @@ class DirSearch:
             self.errors['urls'].append(URL)
 
     def ldirsearch(self,flags={}):
-        print("[●] Vulnerabilities Scanning  -  LFI")
+        print("[●] Vulnerabilities Scanning  -  dirsearch")
         try:
             thread_objects = []
             for URL in self.URLs:

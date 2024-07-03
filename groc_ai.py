@@ -1,14 +1,11 @@
 import os
 from groq import Groq
+from groq_api import api
 
 class groq:
     def __init__(self):
         self.count = 0
-        self.api_keys = [
-            "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",
-            "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",
-            "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"
-        ]
+        self.api_keys=api().api_keys # put ur api here - in list
         self.api_key_count = len(self.api_keys)
 
     def reporting(self, input, message): 
@@ -48,5 +45,4 @@ class groq:
 
         # Print the response
         return response.choices[0].message.content
-
 
